@@ -24,11 +24,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "LOG")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LogRQ.findAll", query = "SELECT l FROM LogRQ l")
-    , @NamedQuery(name = "LogRQ.findByIdlog", query = "SELECT l FROM LogRQ l WHERE l.idlog = :idlog")
-    , @NamedQuery(name = "LogRQ.findByResultado", query = "SELECT l FROM LogRQ l WHERE l.resultado = :resultado")
-    , @NamedQuery(name = "LogRQ.findByFecha", query = "SELECT l FROM LogRQ l WHERE l.fecha = :fecha")})
-public class LogRQ implements Serializable {
+    @NamedQuery(name = "Log.findAll", query = "SELECT l FROM Log l")
+    , @NamedQuery(name = "Log.findByIdlog", query = "SELECT l FROM Log l WHERE l.idlog = :idlog")
+    , @NamedQuery(name = "Log.findByResultado", query = "SELECT l FROM Log l WHERE l.resultado = :resultado")
+    , @NamedQuery(name = "Log.findByFecha", query = "SELECT l FROM Log l WHERE l.fecha = :fecha")})
+public class Log implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,12 +44,12 @@ public class LogRQ implements Serializable {
     private Date fecha;
     @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
     @ManyToOne
-    private UsuarioRQ idusuario;
+    private Usuario idusuario;
 
-    public LogRQ() {
+    public Log() {
     }
 
-    public LogRQ(Integer idlog) {
+    public Log(Integer idlog) {
         this.idlog = idlog;
     }
 
@@ -77,11 +77,11 @@ public class LogRQ implements Serializable {
         this.fecha = fecha;
     }
 
-    public UsuarioRQ getIdusuario() {
+    public Usuario getIdusuario() {
         return idusuario;
     }
 
-    public void setIdusuario(UsuarioRQ idusuario) {
+    public void setIdusuario(Usuario idusuario) {
         this.idusuario = idusuario;
     }
 
@@ -95,10 +95,10 @@ public class LogRQ implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LogRQ)) {
+        if (!(object instanceof Log)) {
             return false;
         }
-        LogRQ other = (LogRQ) object;
+        Log other = (Log) object;
         if ((this.idlog == null && other.idlog != null) || (this.idlog != null && !this.idlog.equals(other.idlog))) {
             return false;
         }
@@ -107,7 +107,7 @@ public class LogRQ implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.as.model.LogRQ[ idlog=" + idlog + " ]";
+        return "ec.edu.espe.as.model.Log[ idlog=" + idlog + " ]";
     }
 
 }

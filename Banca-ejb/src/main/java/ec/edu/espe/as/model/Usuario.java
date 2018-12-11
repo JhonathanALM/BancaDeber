@@ -22,12 +22,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "USUARIO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "UsuarioRQ.findAll", query = "SELECT u FROM UsuarioRQ u")
-    , @NamedQuery(name = "UsuarioRQ.findByIdusuario", query = "SELECT u FROM UsuarioRQ u WHERE u.idusuario = :idusuario")
-    , @NamedQuery(name = "UsuarioRQ.findByUsuario", query = "SELECT u FROM UsuarioRQ u WHERE u.usuario = :usuario")
-    , @NamedQuery(name = "UsuarioRQ.findByClave", query = "SELECT u FROM UsuarioRQ u WHERE u.clave = :clave")
-    , @NamedQuery(name = "UsuarioRQ.findByEst", query = "SELECT u FROM UsuarioRQ u WHERE u.est = :est")})
-public class UsuarioRQ implements Serializable {
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+    , @NamedQuery(name = "Usuario.findByIdusuario", query = "SELECT u FROM Usuario u WHERE u.idusuario = :idusuario")
+    , @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario")
+    , @NamedQuery(name = "Usuario.findByClave", query = "SELECT u FROM Usuario u WHERE u.clave = :clave")
+    , @NamedQuery(name = "Usuario.findByEst", query = "SELECT u FROM Usuario u WHERE u.est = :est")})
+public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,18 +49,18 @@ public class UsuarioRQ implements Serializable {
     @Column(name = "EST")
     private String est;
     @OneToMany(mappedBy = "idusuario")
-    private Collection<ActivaciontransferenciasRQ> activaciontransferenciasRQCollection;
+    private Collection<Activaciontransferencias> activaciontransferenciasCollection;
     @OneToMany(mappedBy = "idusuario")
-    private Collection<LogRQ> logRQCollection;
+    private Collection<Log> logCollection;
 
-    public UsuarioRQ() {
+    public Usuario() {
     }
 
-    public UsuarioRQ(Integer idusuario) {
+    public Usuario(Integer idusuario) {
         this.idusuario = idusuario;
     }
 
-    public UsuarioRQ(Integer idusuario, String usuario, String clave) {
+    public Usuario(Integer idusuario, String usuario, String clave) {
         this.idusuario = idusuario;
         this.usuario = usuario;
         this.clave = clave;
@@ -99,21 +99,21 @@ public class UsuarioRQ implements Serializable {
     }
 
     @XmlTransient
-    public Collection<ActivaciontransferenciasRQ> getActivaciontransferenciasRQCollection() {
-        return activaciontransferenciasRQCollection;
+    public Collection<Activaciontransferencias> getActivaciontransferenciasCollection() {
+        return activaciontransferenciasCollection;
     }
 
-    public void setActivaciontransferenciasRQCollection(Collection<ActivaciontransferenciasRQ> activaciontransferenciasRQCollection) {
-        this.activaciontransferenciasRQCollection = activaciontransferenciasRQCollection;
+    public void setActivaciontransferenciasCollection(Collection<Activaciontransferencias> activaciontransferenciasCollection) {
+        this.activaciontransferenciasCollection = activaciontransferenciasCollection;
     }
 
     @XmlTransient
-    public Collection<LogRQ> getLogRQCollection() {
-        return logRQCollection;
+    public Collection<Log> getLogCollection() {
+        return logCollection;
     }
 
-    public void setLogRQCollection(Collection<LogRQ> logRQCollection) {
-        this.logRQCollection = logRQCollection;
+    public void setLogCollection(Collection<Log> logCollection) {
+        this.logCollection = logCollection;
     }
 
     @Override
@@ -126,10 +126,10 @@ public class UsuarioRQ implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UsuarioRQ)) {
+        if (!(object instanceof Usuario)) {
             return false;
         }
-        UsuarioRQ other = (UsuarioRQ) object;
+        Usuario other = (Usuario) object;
         if ((this.idusuario == null && other.idusuario != null) || (this.idusuario != null && !this.idusuario.equals(other.idusuario))) {
             return false;
         }
@@ -138,7 +138,8 @@ public class UsuarioRQ implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.as.model.UsuarioRQ[ idusuario=" + idusuario + " ]";
+        return "Usuario{" + "idusuario=" + idusuario + ", usuario=" + usuario + ", clave=" + clave + ", est=" + est + ", activaciontransferenciasCollection=" + activaciontransferenciasCollection + ", logCollection=" + logCollection + '}';
     }
 
+    
 }

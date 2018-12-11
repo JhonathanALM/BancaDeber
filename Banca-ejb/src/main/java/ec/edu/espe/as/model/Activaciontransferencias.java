@@ -22,12 +22,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ACTIVACIONTRANSFERENCIAS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ActivaciontransferenciasRQ.findAll", query = "SELECT a FROM ActivaciontransferenciasRQ a")
-    , @NamedQuery(name = "ActivaciontransferenciasRQ.findByIdtrans", query = "SELECT a FROM ActivaciontransferenciasRQ a WHERE a.idtrans = :idtrans")
-    , @NamedQuery(name = "ActivaciontransferenciasRQ.findByNumcuenta", query = "SELECT a FROM ActivaciontransferenciasRQ a WHERE a.numcuenta = :numcuenta")
-    , @NamedQuery(name = "ActivaciontransferenciasRQ.findByEstado", query = "SELECT a FROM ActivaciontransferenciasRQ a WHERE a.estado = :estado")
-    , @NamedQuery(name = "ActivaciontransferenciasRQ.findByMonto", query = "SELECT a FROM ActivaciontransferenciasRQ a WHERE a.monto = :monto")})
-public class ActivaciontransferenciasRQ implements Serializable {
+    @NamedQuery(name = "Activaciontransferencias.findAll", query = "SELECT a FROM Activaciontransferencias a")
+    , @NamedQuery(name = "Activaciontransferencias.findByIdtrans", query = "SELECT a FROM Activaciontransferencias a WHERE a.idtrans = :idtrans")
+    , @NamedQuery(name = "Activaciontransferencias.findByNumcuenta", query = "SELECT a FROM Activaciontransferencias a WHERE a.numcuenta = :numcuenta")
+    , @NamedQuery(name = "Activaciontransferencias.findByEstado", query = "SELECT a FROM Activaciontransferencias a WHERE a.estado = :estado")
+    , @NamedQuery(name = "Activaciontransferencias.findByMonto", query = "SELECT a FROM Activaciontransferencias a WHERE a.monto = :monto")})
+public class Activaciontransferencias implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,12 +46,12 @@ public class ActivaciontransferenciasRQ implements Serializable {
     private BigDecimal monto;
     @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
     @ManyToOne
-    private UsuarioRQ idusuario;
+    private Usuario idusuario;
 
-    public ActivaciontransferenciasRQ() {
+    public Activaciontransferencias() {
     }
 
-    public ActivaciontransferenciasRQ(Integer idtrans) {
+    public Activaciontransferencias(Integer idtrans) {
         this.idtrans = idtrans;
     }
 
@@ -87,11 +87,11 @@ public class ActivaciontransferenciasRQ implements Serializable {
         this.monto = monto;
     }
 
-    public UsuarioRQ getIdusuario() {
+    public Usuario getIdusuario() {
         return idusuario;
     }
 
-    public void setIdusuario(UsuarioRQ idusuario) {
+    public void setIdusuario(Usuario idusuario) {
         this.idusuario = idusuario;
     }
 
@@ -105,10 +105,10 @@ public class ActivaciontransferenciasRQ implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ActivaciontransferenciasRQ)) {
+        if (!(object instanceof Activaciontransferencias)) {
             return false;
         }
-        ActivaciontransferenciasRQ other = (ActivaciontransferenciasRQ) object;
+        Activaciontransferencias other = (Activaciontransferencias) object;
         if ((this.idtrans == null && other.idtrans != null) || (this.idtrans != null && !this.idtrans.equals(other.idtrans))) {
             return false;
         }
@@ -117,7 +117,8 @@ public class ActivaciontransferenciasRQ implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.as.model.ActivaciontransferenciasRQ[ idtrans=" + idtrans + " ]";
+        return "Activaciontransferencias{" + "idtrans=" + idtrans + ", numcuenta=" + numcuenta + ", estado=" + estado + ", monto=" + monto + ", idusuario=" + idusuario + '}';
     }
 
+   
 }

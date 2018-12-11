@@ -2,6 +2,7 @@ package ec.edu.espe.as.api;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.ws.rs.core.Response;
 
 /**
  * @author jhona
@@ -17,7 +18,7 @@ public abstract class AbstractFacade<T> {
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
-        getEntityManager().persist(entity);
+       getEntityManager().persist(entity);
     }
 
     public void edit(T entity) {

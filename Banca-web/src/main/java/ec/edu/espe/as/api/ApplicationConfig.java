@@ -23,9 +23,9 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(ec.edu.espe.as.api.ActivaciontransferenciasRQFacadeREST.class);
-        resources.add(ec.edu.espe.as.api.LogRQFacadeREST.class);
-        resources.add(ec.edu.espe.as.api.UsuarioRQFacadeREST.class);
+        resources.add(ec.edu.espe.as.api.ActivaciontransferenciasFacadeREST.class);
+        resources.add(ec.edu.espe.as.api.LogFacadeREST.class);
+        resources.add(ec.edu.espe.as.api.UsuarioFacadeREST.class);
     }
 
 }

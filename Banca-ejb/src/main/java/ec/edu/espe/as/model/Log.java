@@ -107,7 +107,9 @@ public class Log implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.as.model.Log[ idlog=" + idlog + " ]";
+        return "Log{" + "idlog=" + idlog + ", resultado=" + resultado + ", fecha=" + fecha + ", idusuario=" + idusuario + '}';
     }
+
+    
 
 }

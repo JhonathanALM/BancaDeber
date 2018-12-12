@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -56,10 +57,25 @@ public class ActivaciontransferenciasFacadeREST extends AbstractFacade<Activacio
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response find(@PathParam("id") Integer id) {
-        Activaciontransferencias at= super.find(id);
-        System.out.println("El monto de "+id +" es :"+at.getMonto());
-        return Response.ok(at).build();  
+    public Response find(@PathParam("id") Integer id) {                 
+        boolean band=true;
+        Activaciontransferencias at = null;
+        try {
+           at= super.find(id);  
+           System.out.println("El monto de "+id +" es :"+at.getMonto()); 
+        } catch (Exception e) {
+            band=false;
+        }
+        if (band) {
+            //System.out.println("{ \"monto\":\""+at.getMonto()+"\"}");
+            //return  Response.ok("{ \"monto\"\":"+at.getMonto()+"\"}").build();
+            return  Response.ok(at).build();
+        } else {
+            return Response.status(HttpServletResponse.SC_NOT_FOUND).build();
+        }
+        
+        
+        
     }
 
     @Override

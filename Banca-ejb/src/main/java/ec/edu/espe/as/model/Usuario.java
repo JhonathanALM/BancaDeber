@@ -26,7 +26,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByIdusuario", query = "SELECT u FROM Usuario u WHERE u.idusuario = :idusuario")
     , @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario")
     , @NamedQuery(name = "Usuario.findByClave", query = "SELECT u FROM Usuario u WHERE u.clave = :clave")
-    , @NamedQuery(name = "Usuario.findByEst", query = "SELECT u FROM Usuario u WHERE u.est = :est")})
+    , @NamedQuery(name = "Usuario.findByEst", query = "SELECT u FROM Usuario u WHERE u.est = :est")
+    , @NamedQuery(name = "Usuario.login", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario AND u.clave= :clave")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -140,6 +141,7 @@ public class Usuario implements Serializable {
     public String toString() {
         return "Usuario{" + "idusuario=" + idusuario + ", usuario=" + usuario + ", clave=" + clave + ", est=" + est + ", activaciontransferenciasCollection=" + activaciontransferenciasCollection + ", logCollection=" + logCollection + '}';
     }
+       
 
     
 }

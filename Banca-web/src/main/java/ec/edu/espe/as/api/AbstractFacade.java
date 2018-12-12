@@ -55,5 +55,12 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
+    
+    public T login(String u, String p){
+        return (T) getEntityManager().createNamedQuery("Usuario.login").setParameter("usuario", u).setParameter("clave", p).getSingleResult();
+    }
+    public T usuario(String u){
+        return (T) getEntityManager().createNamedQuery("Usuario.findByUsuario").setParameter("usuario", u).getSingleResult();
+    }
 
 }
